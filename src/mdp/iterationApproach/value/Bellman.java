@@ -49,13 +49,14 @@ public class Bellman{
         }
 
         public static class WeightableDiGraph{
-            protected int V; //vertex;
-            protected int E; //edges;
+            protected int V; //vertice;
+            protected int E; //arestas (edges);
             protected ArrayList<arestaDirecionada>[] adj;
 
             public WeightableDiGraph(int V){
                 this.V = V;
                 this.E = 0;
+                /*Cria a lista de adjacencia para o estado V */
                 adj = (ArrayList<arestaDirecionada>[]) new ArrayList[V];
                 for (int v = 0; v < V; v++) {
                     adj[v] = new ArrayList<arestaDirecionada>();
@@ -98,12 +99,16 @@ public class Bellman{
         }
 
         public static int BellmanFord(WeightableDiGraph g){
+            /* Usamos o peso máximo para cada estado como peso inicio, eq a infinito */
             Arrays.fill(dist, Long.MAX_VALUE);
+
+            /*Os antecessores sao iniciados como -1 */
             Arrays.fill(prev, -1);
+
+            /*A distancia calculada de 0 é iniciada como 0 */
             dist[0] = 0;
             for(int i = 1; i < g.V() - 1; i++){
                 for(arestaDirecionada e : g.adj(i)){
-
                     if(dist[e.to()] > dist[e.from()] + e.weight()){
                         dist[e.to()] = dist[e.from()] + e.weight();
                         prev[e.to()] = e.to();
