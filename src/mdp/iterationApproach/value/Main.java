@@ -1,4 +1,6 @@
 package mdp.iterationApproach.value;
+import mdp.iterationApproach.Estado;
+
 import java.awt.font.FontRenderContext;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -32,16 +34,19 @@ public class Main {
                         }
                     }
             }
-
-            float[][] estados = new float[max][max];
-            for (int r = 0; r < estados.length; r++){
-                for (int c = 0; c <estados.length; c++){
-
-                }
+            System.out.println(pos);
+            //float[][] estados = new float[max][max];
+            for (int xy = 0; xy < pos.size(); xy ++){
+                Estado e = new Estado(Integer.parseInt(pos.get(xy)),Integer.parseInt(pos.get(xy+1)),1, 1);
+                xy+= 1;
             }
 
             while (linha != null) {
-                System.out.printf("%s\n", linha);
+                if(linha.equals("action move-south") || linha.equals("action move-north")||
+                 linha.equals("action move-east")|| linha.equals("action move-west")) {
+                        
+                }
+
                 linha = lerArq.readLine(); // lê da segunda até a última linha
             }
             System.out.println();

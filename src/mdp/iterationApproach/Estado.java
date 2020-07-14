@@ -23,6 +23,8 @@ public class Estado {
             this.visited = false;
             for(int i=0; i<4; ++i)
                 actionTaken[i] = false;
+
+            System.out.println("Estado ("+row+","+col+") criado com probabilidade "+probabilidade);
         }
 
         public void setTerminate() {
