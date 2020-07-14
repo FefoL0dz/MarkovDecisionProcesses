@@ -41,15 +41,59 @@ public class Main {
                 xy+= 1;
             }
 
+            String ESPACO = "(\\b)";
+            Pattern espaco = Pattern.compile(ESPACO);
+            Matcher es;
+            es = espaco.matcher(linha);
+            LinkedList<String[]> actions = new LinkedList<String[]>();
+            LinkedList<String[]> custoactions = new LinkedList<String[]>();
+            String[] builder;
+            String estadoinicial = "";
+            String estadofinal = "";
+            linha = lerArq.readLine();
             while (linha != null) {
+                linha = lerArq.readLine();
+                System.out.println(linha);
+                if(linha== null) break;
                 if(linha.equals("action move-south") || linha.equals("action move-north")||
-                 linha.equals("action move-east")|| linha.equals("action move-west")) {
-                        
+                 linha.equals("action move-east") || linha.equals("action move-west")) {
+                    System.out.println(linha);
+                    linha = lerArq.readLine();
+                    while (!linha.equals("endaction")){
+                        //System.out.println(linha);
+                        builder = linha.split(" ", 4);
+                        builder[0] = builder[0].replaceAll("\\s+","");
+                        actions.add(builder);
+                        linha = lerArq.readLine();
+                    }
                 }
-
-                linha = lerArq.readLine(); // lê da segunda até a última linha
+                if(linha.equals("cost")){
+                    while(!linha.equals("endcost")){
+                        builder = linha.split(" ", 3);
+                        builder[0] = builder[0].replaceAll("\\s+","");
+                        custoactions.add(builder);
+                        linha = lerArq.readLine();
+                    }
+                }
+                if(linha.equals("initialstate")){
+                    while(!linha.equals("endinitialstate")){
+                        estadoinicial = linha;
+                        estadoinicial = estadoinicial.replaceAll("\\s+","");
+                        linha = lerArq.readLine();
+                    }
+                }
+                if(linha.equals("goalstate")){
+                    while(!linha.equals("endgoalstate")){
+                        estadofinal = linha;
+                        estadofinal = estadofinal.replaceAll("\\s+","");
+                        linha = lerArq.readLine();
+                    }
+                }
             }
-            System.out.println();
+            System.out.println("Estado inicial: "+ estadofinal);
+            System.out.println("Estado final: "+estadoinicial);
+            //System.out.println("Actions "+actions);
+            //System.out.println("Actions "+custoactions);
 
             arq.close();
 
