@@ -1,11 +1,9 @@
 package mdp.iterationApproach;
 
 public class Estado {
-        /** the coordinates can only be initialized.  They can't be changed.
-         */
         final int row, col;
-        double reward;
-        double utility;
+        double probabilidade;
+        double utilidade;
         Acao action;
         boolean terminate;
         int index;
@@ -13,11 +11,12 @@ public class Estado {
         boolean visited;
         boolean[] actionTaken = new boolean[4];
 
-        public Estado(int row, int col, double reward, double utility) {
+        public Estado(int row, int col, double probabilidade, double utilidade) {
             this.row = row;
             this.col = col;
-            this.reward = reward;
-            this.utility = utility;
+            this.probabilidade = probabilidade;
+            this.utilidade = utilidade;
+
             this.terminate = false;
             this.index = -1;
             this.action = null;

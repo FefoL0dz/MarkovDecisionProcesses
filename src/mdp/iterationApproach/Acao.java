@@ -10,7 +10,9 @@ public class Acao {
     /**
      * This constructor relies on specific type of action, namely
      * a 4-neighbor type action.  Shouldn't be used.  It's here only
-     * for convenience.
+     * for conv
+     *
+     * enience.
      * @param a A string of action type.
      */
     public Acao(String a) {

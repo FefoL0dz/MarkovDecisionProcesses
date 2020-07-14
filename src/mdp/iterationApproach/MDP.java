@@ -7,10 +7,13 @@ public class MDP {
     Vector reachableStates;
     int numReachableStates = 0;
 
-    static final int ACTION_UP = 0;
-    static final int ACTION_RIGHT = 1;
-    static final int ACTION_DOWN = 2;
-    static final int ACTION_LEFT = 3;
+    static final int MOVE_NORTH = 0;
+    static final int MOVE_EAST= 1;
+    static final int MOVE_SOUTH = 2;
+    static final int MOVE_WEST = 3;
     static final int ACTION_STAY = 4; //stay is not an action per se.
-    static final int numActions = 4;
+    static final int numAcoes = 4;
+
+    static final int numResultingStates = numAcoes+1;
+    Acao[] acoes;
 }

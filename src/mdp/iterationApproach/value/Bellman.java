@@ -16,7 +16,7 @@ public class Bellman{
 
         public static long dist[]; /* Calcula a distancia entre os estados */
         public static long prev[];
-        public static LinkedList<arestaDirecionada> listaEstados= new LinkedList
+        public static LinkedList<arestaDirecionada> listaEstados = new LinkedList
                 <arestaDirecionada>();
 
         public static class arestaDirecionada{
