@@ -16,13 +16,13 @@ public class Acao {
      * @param a A string of action type.
      */
     public Acao(String a) {
-        if(a.equals("north"))
+        if(a.equals("move-north"))
             acao = 0;
-        else if(a.equals("east"))
+        else if(a.equals("move-east"))
             acao = 1;
-        else if(a.equals("south"))
+        else if(a.equals("move-south"))
             acao = 2;
-        else if(a.equals("west"))
+        else if(a.equals("move-west"))
             acao =3;
         else
             throw (new IllegalArgumentException("Illegal action:"+a));

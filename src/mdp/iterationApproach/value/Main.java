@@ -1,4 +1,5 @@
 package mdp.iterationApproach.value;
+import java.awt.font.FontRenderContext;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,9 +11,6 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        Scanner ler = new Scanner(System.in);
-
-        System.out.printf("\nConteúdo do arquivo texto:\n");
         try {
             FileReader arq = new FileReader("C:\\Users\\horte\\IdeaProjects\\MarkovDecisionProcesses\\src\\mdp\\iterationApproach\\value\\navigation_1.txt");
             BufferedReader lerArq = new BufferedReader(arq);
@@ -20,40 +18,33 @@ public class Main {
             String linha = lerArq.readLine(); // lê a primeira linha
             String REGEX = "(\\B\\d*)";
             Pattern posestado = Pattern.compile(REGEX);
-            float Estados[][] = new float [20][2];
             int max = -1;
-            int r = -1;
-            int c = -1;
             Matcher s;
-
+            List<String> pos = new LinkedList<String>();
             if(linha.equals("states")) {
-                while (!linha.equals("endstates")) {
+                linha = lerArq.readLine();
                     s = posestado.matcher(linha);
-                    while (s.find()){
-                        if(!s.group(1).isEmpty()) {
+                    while (s.find()) {
+                        if (!s.group(1).isEmpty()) {
                             if (max < Integer.parseInt(s.group(1))) max = Integer.parseInt(s.group(1));
-                            System.out.println("Max so far " + max);
+                            System.out.println(s.group(1));
+                            pos.add(s.group(1));
                         }
                     }
-                    linha = lerArq.readLine();
+            }
+
+            float[][] estados = new float[max][max];
+            for (int r = 0; r < estados.length; r++){
+                for (int c = 0; c <estados.length; c++){
+
                 }
             }
 
-            /* Matriz de estados criada */
-            List<String> posicoes = new LinkedList<String>();
-            Estados = new float[max][max];
-
-            arq = new FileReader("C:\\Users\\horte\\IdeaProjects\\MarkovDecisionProcesses\\src\\mdp\\iterationApproach\\value\\navigation_1.txt");
-            lerArq = new BufferedReader(arq);
-
-            linha = lerArq.readLine(); // lê a primeira linha
-
-            linha = lerArq.readLine();
-            System.out.printf("%s\n", linha);
             while (linha != null) {
-                //System.out.printf("%s\n", linha);
+                System.out.printf("%s\n", linha);
                 linha = lerArq.readLine(); // lê da segunda até a última linha
             }
+            System.out.println();
 
             arq.close();
 

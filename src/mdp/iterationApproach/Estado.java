@@ -2,8 +2,8 @@ package mdp.iterationApproach;
 
 public class Estado {
         final int row, col;
-        double probabilidade;
-        double utilidade;
+        float probabilidade;
+        float utilidade;
         Acao action;
         boolean terminate;
         int index;
@@ -11,7 +11,7 @@ public class Estado {
         boolean visited;
         boolean[] actionTaken = new boolean[4];
 
-        public Estado(int row, int col, double probabilidade, double utilidade) {
+        public Estado(int row, int col, float probabilidade, float utilidade) {
             this.row = row;
             this.col = col;
             this.probabilidade = probabilidade;
